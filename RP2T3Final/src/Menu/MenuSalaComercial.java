@@ -67,7 +67,7 @@ public class MenuSalaComercial {
         System.out.println("6) ORDENAR");
         System.out.println("0) VOLTAR ");
         System.out.println(" ");
-        System.out.print("OPÇÃO:    ");
+      
 
     }
 
@@ -77,7 +77,7 @@ public class MenuSalaComercial {
         System.out.println("1) CÓDIGO  ");
         System.out.println("0) VOLTAR ");
         System.out.println("\n ");
-        System.out.print("OPÇÃO:     ");
+       
 
     }
 
@@ -88,7 +88,7 @@ public class MenuSalaComercial {
         System.out.println("2) VALOR ");
         System.out.println("0) VOLTAR");
         System.out.println("\n ");
-        System.out.print("OPÇÃO:     ");
+   
 
     }
 
@@ -100,7 +100,7 @@ public class MenuSalaComercial {
         System.out.println("3) AREA ");
         System.out.println("0) VOLTAR");
         System.out.println("\n ");
-        System.out.print("OPÇÃO:     ");
+     
 
     }
 
@@ -210,9 +210,8 @@ public class MenuSalaComercial {
         System.out.println("\n");
         System.out.println("***********  MENU EDITAR ************ ");
         System.out.println("\n ");
-        System.out.println("DIGITE O CODIGO DO IMOVÉL QUE DESEJA EDITAR:");
-        int codigoConsulta = entrada.nextInt();
-        entrada.nextLine();
+        int codigoConsulta = inInt("DIGITE O CODIGO DO IMOVÉL QUE DESEJA EDITAR:");
+       
         Imovel editarLista = lista.consultar(codigoConsulta);
         entrada.nextLine();
 
@@ -242,9 +241,8 @@ public class MenuSalaComercial {
                 System.out.println("11) NÚMERO DE SALAS");
                 System.out.println("12) NÚMERO DE BANHEIROS");
                 System.out.println(" \n");
-                System.out.print("OPÇÃO:    ");
-                k = entrada.nextInt();
-                entrada.nextLine();
+               k = inInt("Opção: ");
+               
 
                 switch (k) {
                     case 1:
@@ -385,8 +383,7 @@ public class MenuSalaComercial {
 
                 case 2:
                     MenuSalaComercial.menu2();
-                    int opcao = entrada.nextInt();
-                    entrada.nextLine();
+                    int opcao = inInt("Opção: ");
 
                     switch (opcao) {
                         case 1:
@@ -413,8 +410,8 @@ public class MenuSalaComercial {
 
                 case 5:
                     MenuSalaComercial.menu3();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
+                    opcao = inInt("Opção: ");
+                    
 
                     switch (opcao) {
                         case 1:
@@ -441,8 +438,7 @@ public class MenuSalaComercial {
                 case 6:
                     List<Imovel> aux;
                     MenuSalaComercial.menu4();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
+                   opcao = inInt("Opção: ");
 
                     switch (opcao) {
                         case 1:
