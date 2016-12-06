@@ -164,13 +164,21 @@ public class ListaLigadaDuplamente<T> implements List<T>,Serializable, Iterator{
     }
 
     @Override
-    public T get(int i) {
-        No aux = this.getInicio();
-        while( aux.getIndice() != i ){
-            aux = aux.getProximo();
-        }
-        return (T) aux.getInfo();
-    }
+ 
+   public T get(int index) { 
+       No aux = this.inicio;
+        if (index < size && index > -1 && size != 0) {
+            for (int i = 0; i < index; i++) { 
+               aux = aux.getProximo();
+            }  
+          return (T) aux.getInfo();
+        } else {  
+          throw new IndexOutOfBoundsException("Indice inválido!");
+        } 
+   }
+
+    
+
 
     /**
      * @return the inicio
