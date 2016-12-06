@@ -193,6 +193,12 @@ public class MenuTerreno {
 
             System.out.println("Imóvel Excluído! ");
             lista.escreverArquivo();
+            try {
+           ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
+            lista.escreverArquivo();
+        } catch (Exception ex) {
+            Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
 
             System.out.println("Imóvel Não Encontrado! ");

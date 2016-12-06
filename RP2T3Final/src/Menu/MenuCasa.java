@@ -269,6 +269,12 @@ public class MenuCasa {
         int codigo = entrada.nextInt();
         entrada.nextLine();
         lista.excluir(codigo);
+        try {
+           ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
+            lista.escreverArquivo();
+        } catch (Exception ex) {
+            Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

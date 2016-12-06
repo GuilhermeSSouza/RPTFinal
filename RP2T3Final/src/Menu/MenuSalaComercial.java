@@ -186,14 +186,20 @@ public class MenuSalaComercial {
     
 
     public void excluirControle() {
-        System.out.println(" DIGITE O CODIGO DO IMÓVEL: ");
-        boolean objeto = lista.excluir(entrada.nextInt());
+        boolean objeto = lista.excluir(inInt(" DIGITE O CODIGO DO IMÓVEL: "));
         if (objeto == true) {
 
             System.out.println("IMÓVEL EXCUIDO");
             lista.escreverArquivo();
+             try {
+           ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
+            lista.escreverArquivo();
+        } catch (Exception ex) {
+            Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
-
+            
+           
             System.out.println("IMÓVEL NÂO ENCONTRADO");
         }
 
