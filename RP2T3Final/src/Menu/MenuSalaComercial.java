@@ -27,19 +27,19 @@ import java.util.logging.Logger;
 public class MenuSalaComercial {
 
     ListaDeImoveis lista;
+    private List<Imovel> ListaOrdenada;
     Scanner entrada = new Scanner(System.in);
-    private String caminhocod = System.getProperty("user.dir") + System.getProperty("file.separator") +"CodigoImovel.bin";
-    
-    
+    private String caminhocod = System.getProperty("user.dir") + System.getProperty("file.separator") + "CodigoImovel.bin";
+
     /**
- * Metodo que chama o metodo que carrega arquivos dentro da lista de Imoveis
- */
-    public MenuSalaComercial(){
+     * Metodo que chama o metodo que carrega arquivos dentro da lista de Imoveis
+     */
+    public MenuSalaComercial() {
         TipoDeImovel tipo;
         tipo = TipoDeImovel.SALACOMERCIAL;
         String caminho = System.getProperty("user.dir") + System.getProperty("file.separator") + tipo + ".bin";
         lista = new ListaDeImoveis(caminho, tipo);
-        
+
         try {
             ListaDeImoveis.lerArquivoBinarioCod(caminhocod);
         } catch (IOException ex) {
@@ -47,17 +47,13 @@ public class MenuSalaComercial {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MenuApartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
-        
-        
-        
-        if(lista.lerArquivo() == true){
+
+        if (lista.lerArquivo() == true) {
             System.out.println("Arquivos carregados");
-        }else {
+        } else {
             System.out.println("Arquivo não iniciados");
         }
-    
+
     }
 
     public static void menu() {
@@ -95,19 +91,21 @@ public class MenuSalaComercial {
         System.out.print("OPÇÃO:     ");
 
     }
+
     public static void menu4() {
         System.out.println("*************** MENU DE ORDENAÇÃO*****************");
         System.out.println(" \n");
-        System.out.println("1) ARÉA ");
-        System.out.println("2) CODIGO ");
-        System.out.println("3) VALOR");
+        System.out.println("1) CODIGO ");
+        System.out.println("2) VALOR ");
+        System.out.println("3) AREA ");
         System.out.println("0) VOLTAR");
         System.out.println("\n ");
         System.out.print("OPÇÃO:     ");
 
     }
+
     /**
-     * Metodo que faz a interação com o usuário, recebendo as informações 
+     * Metodo que faz a interação com o usuário, recebendo as informações
      * passando para o construtor.
      */
     public void IncluirImovel() {
@@ -151,20 +149,19 @@ public class MenuSalaComercial {
             System.out.println("IMÓVEL NÃO INCLUIDO:");
         }
         try {
-           ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
+            ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
             lista.escreverArquivo();
         } catch (Exception ex) {
             Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     /**
      * Metodo que recebe uma informação do usuario, e consulta se o objeto esta
      * na listaImoveis.
      */
     public void Consultar() {
-        
+
         System.out.println("===============IMÓVEIS DISPONIVEIS================");
         lista.mostrarLista();
         System.out.println("\n");
@@ -182,8 +179,6 @@ public class MenuSalaComercial {
         }
 
     }
-    
-    
 
     public void excluirControle() {
         boolean objeto = lista.excluir(inInt(" DIGITE O CODIGO DO IMÓVEL: "));
@@ -191,23 +186,23 @@ public class MenuSalaComercial {
 
             System.out.println("IMÓVEL EXCUIDO");
             lista.escreverArquivo();
-             try {
-           ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
-            lista.escreverArquivo();
-        } catch (Exception ex) {
-            Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                ListaDeImoveis.escreveBinarioCod(caminhocod, Imovel.getCodigoStat());
+                lista.escreverArquivo();
+            } catch (Exception ex) {
+                Logger.getLogger(MenuSalaComercial.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            
-           
+
             System.out.println("IMÓVEL NÂO ENCONTRADO");
         }
 
     }
+
     /**
-     * metodo que recebe as informações que seram editadas.
-     * O usuario pode escolher qual informação será editada.
-     * Se o imovél não existe sai do metod editar.
+     * metodo que recebe as informações que seram editadas. O usuario pode
+     * escolher qual informação será editada. Se o imovél não existe sai do
+     * metod editar.
      */
 
     public void editarControle() {
@@ -361,7 +356,6 @@ public class MenuSalaComercial {
 
     }
 
-    
     private int mostrarLista(List<Imovel> lista) {
         int imovelCod;
         div();
@@ -372,10 +366,10 @@ public class MenuSalaComercial {
         div();
         return inInt("Digite o código do imóvel: ");
     }
-    
+
     public void menuInicial() {
         int i;
-        
+
         do {
             MenuSalaComercial.menu();
             i = entrada.nextInt();
@@ -396,7 +390,7 @@ public class MenuSalaComercial {
 
                     switch (opcao) {
                         case 1:
-                            
+
                             Consultar();
                             break;
 
@@ -425,25 +419,25 @@ public class MenuSalaComercial {
                     switch (opcao) {
                         case 1:
                             String s = inString("INFORME O BAIRRO  ");
-                            List l =lista.pesquisaBairro(s);
+                            List l = lista.pesquisaBairro(s);
                             Imovel imovel = lista.consultar(mostrarLista(l));
                             System.out.println(imovel.toString());
                             break;
-                            
+
                         case 2:
                             double d = inDouble("INFORME O VALOR  ");
-                            List k =lista.pesquisaValor(d);
+                            List k = lista.pesquisaValor(d);
                             Imovel imo = lista.consultar(mostrarLista(k));
                             System.out.println(imo.toString());
-                            
+
                             break;
 
                         default:
                             break;
 
                     }
-                   break;
-                   
+                    break;
+
                 case 6:
                     List<Imovel> aux;
                     MenuSalaComercial.menu4();
@@ -452,19 +446,28 @@ public class MenuSalaComercial {
 
                     switch (opcao) {
                         case 1:
-                            aux= lista.ordenarArea();
-                            System.out.println(aux.toString());
-                            
+                            this.ListaOrdenada = this.lista.ordenarCodigo();
+                            int imovelCod = this.mostrarLista(ListaOrdenada);
+                            System.out.println("==========================================");
+                            System.out.println(lista.consultar(imovelCod).toString());
+                            System.out.println("==========================================");
+
                             break;
-                            
+
                         case 2:
-                            aux= lista.ordenarCodigo();
-                            System.out.println(aux.toString());                           
+                            this.ListaOrdenada = this.lista.ordenarValor();
+                            imovelCod = this.mostrarLista(ListaOrdenada);
+                            System.out.println("==========================================");
+                            System.out.println(lista.consultar(imovelCod).toString());
+                            System.out.println("==========================================");
                             break;
                         case 3:
-                            aux = lista.ordenarValor();
-                            System.out.println(aux.toString());
-                            
+                            this.ListaOrdenada = this.lista.ordenarArea();
+                            imovelCod = this.mostrarLista(ListaOrdenada);
+                            System.out.println("==========================================");
+                            System.out.println(lista.consultar(imovelCod).toString());
+                            System.out.println("==========================================");
+
                             break;
                         default:
                             break;
