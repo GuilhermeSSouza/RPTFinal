@@ -241,8 +241,8 @@ public class ListaLigadaDuplamente<T> implements List<T>, Serializable, Iterator
             throw new IndexOutOfBoundsException("Valor fora do intervalo válido.");
 
         } else {
-            No aux = this.getInicio();
-            Object obj;
+            No<T> aux = this.getInicio();
+            T obj;
 
             for (int j = 0; j < i; j++) {
                 aux = aux.getAnterior();
@@ -250,15 +250,36 @@ public class ListaLigadaDuplamente<T> implements List<T>, Serializable, Iterator
             }
             obj = aux.getInfo();
             aux.setInfo(e);
-            return (T) obj;
+            return obj;
         }
     }
 
+     /**
+    * Metodo que funciona se ja existe algum objeto na lista de imoveis
+    * 
+    * @param index
+    * @param element 
+    */
     @Override
-    public void add(int i, T e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void add(int index, T element) {
+        int numElements = 0;
+		if (index < 0 || index > numElements) {
+			throw new IndexOutOfBoundsException("" + index);
+		}
 
+		if (index == 0) {
+			add(element);
+			return;
+		}
+                No<T> aux = new No(indice, element, this.fim.getProximo(), this.fim);
+                this.fim.setProximo(aux);
+                this.fim = aux;
+                this.inicio.setAnterior(fim);
+		numElements++;
+
+	
+    }
+    
     @Override
     public T remove(int i) {
         T aux1;
