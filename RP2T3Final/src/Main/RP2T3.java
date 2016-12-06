@@ -38,8 +38,8 @@ public class RP2T3 {
         while (op != 0) {
             System.out.println(" ");
             System.out.println("******** BEM VINDO AO MENU ********");
-            System.out.println("1) APARTAMENTO \n2) CASA \n3) CHACARA\n"
-                    + "4) SALA COMERCIAL \n5) TERRENO \n0) SAIR");
+            System.out.println("1) APARTAMENTO  \n2) CHACARA\n"
+                    + "3) SALA COMERCIAL \n4) TERRENO \n0) SAIR");
             System.out.println(" ");
             div();
             op =inInt("Opção: ");
@@ -52,22 +52,22 @@ public class RP2T3 {
 
                     break;
 
-                case (2):
-                    System.out.println(" ");
-                    casa.menuInicial();
-                    break;
+//                case (2):
+//                    System.out.println(" ");
+//                    casa.menuInicial();
+//                    break;
                     
-                case (3):
+                case (2):
                     System.out.println(" ");
                     chacara.menuInicial(); 
                     break;
                     
-                case (4):
+                case (3):
                     System.out.println(" ");
                     salaC.menuInicial();
                     break;
                     
-                case (5):
+                case (4):
                     System.out.println(" ");
                     terreno.menuInicial();
                     break;
